@@ -36,19 +36,16 @@ const AppPage: React.FC<DashboardType> = ({setActivePage, list, setList, default
         setList(list.filter(item => (item.id !== id)))
     }
 
+    const handleKeyDown = (event: any) => {
+        if (event.key === 'Enter') {
+            if(value) {
+                handleSave()
+            }
+        }
+    }
+
     return (
         <div className={styles.Container}>
-            <div className={styles.contentName}>
-                <input type='text' value={value} onChange={handleChangeName} className={styles.Input}/>
-                <button
-                    disabled={!value}
-                    onClick={handleSave}
-                    style={{width: '30%'}}
-                    className={styles.button}
-                >
-                    ADD
-                </button>
-            </div>
             {list.map(item => (<div className={styles.list} key={item.id}>
                 <button
                     onClick={() => setBalance(item.balance + 100, item.id)}
@@ -71,6 +68,24 @@ const AppPage: React.FC<DashboardType> = ({setActivePage, list, setList, default
                 >delete
                 </button>
             </div>))}
+            <div className={styles.contentName}>
+                <input
+                    type='text'
+                    value={value}
+                    onKeyDown={handleKeyDown}
+                    onChange={handleChangeName}
+                    className={styles.Input}
+
+                />
+                <button
+                    disabled={!value}
+                    onClick={handleSave}
+                    style={{width: '30%'}}
+                    className={styles.button}
+                >
+                    ADD
+                </button>
+            </div>
             <button
                 onClick={handleRefresh}
                 style={{backgroundColor: '#FF013C'}}
