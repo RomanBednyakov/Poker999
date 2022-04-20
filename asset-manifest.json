@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Poker999/static/css/main.afb10192.css",
+    "main.js": "/Poker999/static/js/main.5ab4f95c.js",
+    "static/js/787.28cb0dcd.chunk.js": "/Poker999/static/js/787.28cb0dcd.chunk.js",
+    "index.html": "/Poker999/index.html",
+    "main.afb10192.css.map": "/Poker999/static/css/main.afb10192.css.map",
+    "main.5ab4f95c.js.map": "/Poker999/static/js/main.5ab4f95c.js.map",
+    "787.28cb0dcd.chunk.js.map": "/Poker999/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.afb10192.css",
+    "static/js/main.5ab4f95c.js"
+  ]
+}
