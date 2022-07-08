@@ -10,7 +10,7 @@ const SignUp = ({ history }: any) => {
       await app
         .auth()
         .createUserWithEmailAndPassword(email.value, password.value);
-      history.push("/");
+      history.push("/Poker999");
     } catch (error) {
       alert(error);
     }

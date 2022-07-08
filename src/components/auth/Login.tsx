@@ -23,7 +23,7 @@ const Login = ({ history }: any) => {
   const { currentUser }: any = useContext(AuthContext);
 
   if (currentUser) {
-    return <Redirect to="/" />;
+    return <Redirect to="/Poker999" />;
   }
 
     const handleClickSignup = () => {
