@@ -6,6 +6,7 @@ import AppPage from "../app";
 import {LIST_PAGES, DEFAULT_BALANCE} from "../../moks";
 import app, {DB} from "../../base";
 import {AuthContext} from "../../components/auth";
+import style from './style.module.css'
 
 const MainPage = () => {
     const [list, setList] = useState<ItemType[]>([])
@@ -13,7 +14,8 @@ const MainPage = () => {
     const [defaultBalance, setDefaultBalance] = useState<number>(DEFAULT_BALANCE)
 
     const {currentUser}: any = useContext(AuthContext);
-    const isAdmin = currentUser?.providerData[0]?.email === 'roman@mail.ru'
+    const email = currentUser?.providerData[0]?.email
+    const isAdmin = email === 'roman@mail.ru' || email === 'gitis.senja@ya.ru'
 
     const getData = async () => {
         try {
@@ -100,7 +102,7 @@ const MainPage = () => {
     }
 
     return (
-        <div>
+        <div className={style.main}>
             <button onClick={() => app.auth().signOut()}>Sign out</button>
             {getContent()}
         </div>

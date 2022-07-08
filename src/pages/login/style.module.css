@@ -1,0 +1,62 @@
+
+.main {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoImg {
+    width: 300px;
+    height: 200px;
+}
+
+.inputBox {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonBox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.input {
+    width: 90%;
+    height: 50px;
+    margin-bottom: 20px!important;
+}
+
+.button {
+    background-color: rgb(211, 47, 47)!important;
+    margin: 5px;
+    width: 160px;
+    color: white!important;
+}
+.buttonSingUp {
+    margin: 5px;
+    width: 160px;
+    color: rgb(211, 47, 47)!important;
+}
