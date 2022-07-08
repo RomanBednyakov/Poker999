@@ -43,7 +43,7 @@ const Login = ({ history }: any) => {
           <input name="password" type="password" placeholder="Password" />
         </label>
         <button type="submit">Log in</button>
-        <button onClick={handleClickSignup}>Log Up</button>
+        <button onClick={handleClickSignup}>sign up</button>
       </form>
     </div>
   );
