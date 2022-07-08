@@ -11,9 +11,10 @@ type DashboardType = {
     setList: (list: ItemType[]) => void;
     list: ItemType[];
     defaultBalance: number;
+    isAdmin: boolean;
 }
 
-const AppPage: React.FC<DashboardType> = ({setActivePage, list, setList, defaultBalance}) => {
+const AppPage: React.FC<DashboardType> = ({setActivePage, list, setList, defaultBalance, isAdmin}) => {
     const [value, setValue] = useState('')
 
     const handleRefresh = () => {
@@ -44,19 +45,30 @@ const AppPage: React.FC<DashboardType> = ({setActivePage, list, setList, default
         }
     }
 
+    const getBalance = () => {
+        let result = 0
+        list.forEach(item => {
+            result = Number(result) + Number(item.balance)
+        })
+        return result
+    }
+
     return (
         <div className={styles.Container}>
+            <div className={styles.sumBalance}>Sum: {getBalance()} $</div>
             {list.map(item => (<div className={styles.list} key={item.id}>
                 <button
                     onClick={() => setBalance(item.balance + 100, item.id)}
                     style={{backgroundColor: 'green'}}
                     className={styles.buttonAdd}
+                    disabled={!isAdmin}
                 >+ 100
                 </button>
                 <button
                     onClick={() => setBalance(item.balance - 100, item.id)}
                     style={{backgroundColor: '#FF013C'}}
                     className={styles.buttonAdd}
+                    disabled={!isAdmin}
                 >- 100
                 </button>
                 <div>{item.name}</div>
@@ -65,6 +77,7 @@ const AppPage: React.FC<DashboardType> = ({setActivePage, list, setList, default
                     onClick={() => deleteUser(item.id)}
                     style={{backgroundColor: '#FF013C', marginLeft: 'auto'}}
                     className={styles.buttonAdd}
+                    disabled={!isAdmin}
                 >delete
                 </button>
             </div>))}
@@ -74,11 +87,12 @@ const AppPage: React.FC<DashboardType> = ({setActivePage, list, setList, default
                     value={value}
                     onKeyDown={handleKeyDown}
                     onChange={handleChangeName}
+                    disabled={!isAdmin}
                     className={styles.Input}
 
                 />
                 <button
-                    disabled={!value}
+                    disabled={!value || !isAdmin}
                     onClick={handleSave}
                     style={{width: '30%'}}
                     className={styles.button}
@@ -88,6 +102,7 @@ const AppPage: React.FC<DashboardType> = ({setActivePage, list, setList, default
             </div>
             <button
                 onClick={handleRefresh}
+                disabled={!isAdmin}
                 style={{backgroundColor: '#FF013C'}}
                 className={styles.button}
             >

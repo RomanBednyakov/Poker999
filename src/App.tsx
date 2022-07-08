@@ -1,64 +1,25 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import './App.css';
-import {ItemType} from './types'
-import Dashboard from "./components/dashboard";
-import BalancePage from "./components/balancePage";
-import AppPage from "./components/app";
-import {LIST_PAGES, DEFAULT_BALANCE} from "./moks";
-import {getLocalStorageItem, setLocalStorageItem} from './utils/localStorage';
+import {AuthProvider} from "./components/auth/Auth";
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import PrivateRoute from "./components/auth/PrivateRoute";
+import Login from "./components/auth/Login";
+import SignUp from "./components/auth/SignUp";
+import MainPage from "./components/main";
 
 const App = () => {
-    const [list, setList] = useState<ItemType[]>([])
-    const [activePage, setActivePage] = useState<string | null>(null)
-    const [defaultBalance, setDefaultBalance] = useState<number>(DEFAULT_BALANCE)
-
-    useEffect(() => {
-        const list = getLocalStorageItem('list')
-        if (list) {
-            setList(list)
-            setActivePage(LIST_PAGES.DASHBOARD)
-        } else {
-            setActivePage(LIST_PAGES.HOME)
-        }
-    }, [])
-
-    useEffect(() => {
-        if(list.length > 0) {
-            setLocalStorageItem('list', list)
-        }
-    }, [list])
-
-    const getContent = () => {
-        switch (activePage) {
-            case LIST_PAGES.DASHBOARD: {
-                return <Dashboard setList={setList} setActivePage={setActivePage}/>
-            }
-            case LIST_PAGES.HOME: {
-                return <BalancePage
-                    setActivePage={setActivePage}
-                    setList={setList}
-                    list={list}
-                    setDefaultBalance={setDefaultBalance}
-                    defaultBalance={defaultBalance}
-                />
-            }
-            case LIST_PAGES.APP: {
-                return <AppPage
-                    defaultBalance={defaultBalance}
-                    setActivePage={setActivePage}
-                    list={list}
-                    setList={setList}
-                />
-            }
-            default: {
-                return <div/>;
-            }
-        }
-    }
 
     return (
         <div className="App">
-            {getContent()}
+            <AuthProvider>
+                <Router>
+                    <div>
+                        <PrivateRoute exact path="/" component={MainPage} />
+                        <Route exact path="/login" component={Login} />
+                        <Route exact path="/signup" component={SignUp} />
+                    </div>
+                </Router>
+            </AuthProvider>
         </div>
     );
 }

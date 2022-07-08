@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 
-import {getLocalStorageItem, setLocalStorageItem} from '../../utils/localStorage';
-import {DEFAULT_BALANCE, DEFAULT_ITEM, DEFAULT_LIST_NAME, LIST_PAGES} from '../../moks';
+import {DEFAULT_ITEM, DEFAULT_LIST_NAME, LIST_PAGES} from '../../moks';
 import {ItemType} from "../../types";
 
 import styles from './style.module.css';

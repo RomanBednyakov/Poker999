@@ -25,6 +25,11 @@ export const DEFAULT_LIST: ItemType[] = [{
         balance: 200,
         id: "id" + Math.random().toString(16).slice(2)
     },
+    {
+        name: 'Пира',
+        balance: 200,
+        id: "id" + Math.random().toString(16).slice(2)
+    },
 ]
 
 export const DEFAULT_ITEM: ItemType = {
@@ -33,7 +38,7 @@ export const DEFAULT_ITEM: ItemType = {
     id: "id" + Math.random().toString(16).slice(2)
 }
 
-export const DEFAULT_LIST_NAME: string[] = ['Царь', 'Семен', 'Зорг', 'Леха', 'Тон', 'Зорг']
+export const DEFAULT_LIST_NAME: string[] = ['Царь', 'Семен', 'Зорг', 'Леха', 'Тон', 'Пира']
 
 export const LIST_PAGES: any = {
     DASHBOARD: 'DASHBOARD',
