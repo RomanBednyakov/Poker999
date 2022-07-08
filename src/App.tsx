@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import {AuthProvider} from "./components/auth/Auth";
+import {AuthProvider} from "./components/auth";
 import {BrowserRouter as Router, Route} from "react-router-dom";
-import PrivateRoute from "./components/auth/PrivateRoute";
-import Login from "./components/auth/Login";
-import SignUp from "./components/auth/SignUp";
-import MainPage from "./components/main";
+import PrivateRoute from "./components/privateRoute/privateRoute";
+import Login from "./pages/login";
+import SignUp from "./pages/registration";
+import MainPage from "./pages/main";
 
 const App = () => {
 

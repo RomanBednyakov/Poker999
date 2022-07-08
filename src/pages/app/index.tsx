@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 
 import {DEFAULT_ITEM, LIST_PAGES} from '../../moks';
 import {ItemType} from "../../types";
+import DeleteIcon from "../../img/delete.png";
 
 
 import styles from './style.module.css';
@@ -62,23 +63,23 @@ const AppPage: React.FC<DashboardType> = ({setActivePage, list, setList, default
                     style={{backgroundColor: 'green'}}
                     className={styles.buttonAdd}
                     disabled={!isAdmin}
-                >+ 100
+                >+
                 </button>}
                     {isAdmin && <button
                     onClick={() => setBalance(item.balance - 100, item.id)}
                     style={{backgroundColor: '#FF013C'}}
                     className={styles.buttonAdd}
                     disabled={!isAdmin}
-                >- 100
+                >-
                 </button>}
-                <div>{item.name}</div>
-                <div className={styles.balance}>{item.balance}</div>
+                <div>{item.name}:</div>
+                <div className={styles.balance}>{item.balance}$</div>
                     {isAdmin && <button
                     onClick={() => deleteUser(item.id)}
-                    style={{backgroundColor: '#FF013C', marginLeft: 'auto'}}
+                    style={{backgroundColor: 'transparent', marginRight: 0}}
                     className={styles.buttonAdd}
                     disabled={!isAdmin}
-                >delete
+                ><img className={styles.img} src={DeleteIcon} alt=""/>
                 </button>}
             </div>))}
             {isAdmin && <div className={styles.contentName}>

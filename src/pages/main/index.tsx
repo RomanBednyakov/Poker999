@@ -1,11 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {ItemType} from '../../types'
-import Dashboard from "../../components/dashboard";
-import BalancePage from "../../components/balancePage";
-import AppPage from "../../components/app";
+import Dashboard from "../dashboard";
+import BalancePage from "../balance";
+import AppPage from "../app";
 import {LIST_PAGES, DEFAULT_BALANCE} from "../../moks";
 import app, {DB} from "../../base";
-import {AuthContext} from "../auth/Auth";
+import {AuthContext} from "../../components/auth";
 
 const MainPage = () => {
     const [list, setList] = useState<ItemType[]>([])
