@@ -56,13 +56,25 @@ const MainPage = () => {
 
             case LIST_PAGES.DASHBOARD: {
                 if(!isAdmin) {
-                    return <div>жди</div>
+                    return <AppPage
+                        isAdmin={isAdmin}
+                        defaultBalance={defaultBalance}
+                        setActivePage={setActivePage}
+                        list={list}
+                        setList={setList}
+                    />
                 }
                 return <Dashboard setActivePage={setActivePage}/>
             }
             case LIST_PAGES.HOME: {
                 if(!isAdmin) {
-                    return <div>жди</div>
+                    return <AppPage
+                        isAdmin={isAdmin}
+                        defaultBalance={defaultBalance}
+                        setActivePage={setActivePage}
+                        list={list}
+                        setList={setList}
+                    />
                 }
                 return <BalancePage
                     setActivePage={setActivePage}

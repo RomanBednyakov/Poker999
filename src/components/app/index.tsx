@@ -57,31 +57,31 @@ const AppPage: React.FC<DashboardType> = ({setActivePage, list, setList, default
         <div className={styles.Container}>
             <div className={styles.sumBalance}>Sum: {getBalance()} $</div>
             {list.map(item => (<div className={styles.list} key={item.id}>
-                <button
+                    {isAdmin && <button
                     onClick={() => setBalance(item.balance + 100, item.id)}
                     style={{backgroundColor: 'green'}}
                     className={styles.buttonAdd}
                     disabled={!isAdmin}
                 >+ 100
-                </button>
-                <button
+                </button>}
+                    {isAdmin && <button
                     onClick={() => setBalance(item.balance - 100, item.id)}
                     style={{backgroundColor: '#FF013C'}}
                     className={styles.buttonAdd}
                     disabled={!isAdmin}
                 >- 100
-                </button>
+                </button>}
                 <div>{item.name}</div>
                 <div className={styles.balance}>{item.balance}</div>
-                <button
+                    {isAdmin && <button
                     onClick={() => deleteUser(item.id)}
                     style={{backgroundColor: '#FF013C', marginLeft: 'auto'}}
                     className={styles.buttonAdd}
                     disabled={!isAdmin}
                 >delete
-                </button>
+                </button>}
             </div>))}
-            <div className={styles.contentName}>
+            {isAdmin && <div className={styles.contentName}>
                 <input
                     type='text'
                     value={value}
@@ -99,15 +99,15 @@ const AppPage: React.FC<DashboardType> = ({setActivePage, list, setList, default
                 >
                     ADD
                 </button>
-            </div>
-            <button
+            </div>}
+            {isAdmin && <button
                 onClick={handleRefresh}
                 disabled={!isAdmin}
                 style={{backgroundColor: '#FF013C'}}
                 className={styles.button}
             >
                 REFRESH
-            </button>
+            </button>}
         </div>
     );
 }
