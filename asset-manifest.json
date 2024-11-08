@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Poker999/static/css/main.c04d4212.css",
-    "main.js": "/Poker999/static/js/main.c647bdaf.js",
-    "static/js/787.28cb0dcd.chunk.js": "/Poker999/static/js/787.28cb0dcd.chunk.js",
+    "main.css": "/Poker999/static/css/main.ffb0d906.css",
+    "main.js": "/Poker999/static/js/main.9a8b1f5e.js",
+    "static/js/453.ed3810f9.chunk.js": "/Poker999/static/js/453.ed3810f9.chunk.js",
     "static/media/pokker-office.svg": "/Poker999/static/media/pokker-office.e1e77d2ead76ac6ef5dd31b5d2112273.svg",
     "index.html": "/Poker999/index.html",
-    "main.c04d4212.css.map": "/Poker999/static/css/main.c04d4212.css.map",
-    "main.c647bdaf.js.map": "/Poker999/static/js/main.c647bdaf.js.map",
-    "787.28cb0dcd.chunk.js.map": "/Poker999/static/js/787.28cb0dcd.chunk.js.map"
+    "main.ffb0d906.css.map": "/Poker999/static/css/main.ffb0d906.css.map",
+    "main.9a8b1f5e.js.map": "/Poker999/static/js/main.9a8b1f5e.js.map",
+    "453.ed3810f9.chunk.js.map": "/Poker999/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c04d4212.css",
-    "static/js/main.c647bdaf.js"
+    "static/css/main.ffb0d906.css",
+    "static/js/main.9a8b1f5e.js"
   ]
 }
