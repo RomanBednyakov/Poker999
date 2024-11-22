@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Poker999/static/css/main.a17a6ff8.css",
-    "main.js": "/Poker999/static/js/main.0f14d44b.js",
+    "main.js": "/Poker999/static/js/main.7bcfc1ba.js",
     "static/js/453.ed3810f9.chunk.js": "/Poker999/static/js/453.ed3810f9.chunk.js",
     "static/media/pokker-office.svg": "/Poker999/static/media/pokker-office.e1e77d2ead76ac6ef5dd31b5d2112273.svg",
     "index.html": "/Poker999/index.html",
     "main.a17a6ff8.css.map": "/Poker999/static/css/main.a17a6ff8.css.map",
-    "main.0f14d44b.js.map": "/Poker999/static/js/main.0f14d44b.js.map",
+    "main.7bcfc1ba.js.map": "/Poker999/static/js/main.7bcfc1ba.js.map",
     "453.ed3810f9.chunk.js.map": "/Poker999/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a17a6ff8.css",
-    "static/js/main.0f14d44b.js"
+    "static/js/main.7bcfc1ba.js"
   ]
 }
