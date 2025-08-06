@@ -46,6 +46,8 @@ export const LIST_PAGES: any = {
     APP: 'APP',
     Trading: 'Trading',
     TradingMartin: 'TradingMartin',
+    GAME_HISTORY: 'GAME_HISTORY',
+    STATISTICS: 'STATISTICS',
 }
 
 export const DEFAULT_BALANCE: number = 200

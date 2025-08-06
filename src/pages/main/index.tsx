@@ -9,6 +9,8 @@ import {AuthContext} from "../../components/auth";
 import style from './style.module.css'
 import TradingPage from "../trading";
 import TradingMartinPage from "../trading-martin";
+import GameHistoryPage from "../game-history";
+import StatisticsPage from "../statistics";
 
 const MainPage = () => {
     const [list, setList] = useState<ItemType[]>([])
@@ -103,6 +105,12 @@ const MainPage = () => {
             case LIST_PAGES.TradingMartin: {
                 return <TradingMartinPage />
             }
+            case LIST_PAGES.GAME_HISTORY: {
+                return <GameHistoryPage />
+            }
+            case LIST_PAGES.STATISTICS: {
+                return <StatisticsPage />
+            }
             default: {
                 return <div/>;
             }
@@ -130,23 +138,39 @@ const MainPage = () => {
                 >
                     {isGuestMode ? 'Exit Guest' : 'Sign out'}
                 </button>
-                <button 
-                    className={style.navButton}
-                    onClick={() => setActivePage(LIST_PAGES.Trading)}
-                >
-                    Trading
-                </button>
-                <button 
-                    className={style.navButton}
-                    onClick={() => setActivePage(LIST_PAGES.TradingMartin)}
-                >
-                    Trading Martin
-                </button>
+                {!isGuestMode && (
+                    <>
+                        <button 
+                            className={style.navButton}
+                            onClick={() => setActivePage(LIST_PAGES.Trading)}
+                        >
+                            Trading
+                        </button>
+                        <button 
+                            className={style.navButton}
+                            onClick={() => setActivePage(LIST_PAGES.TradingMartin)}
+                        >
+                            Trading Martin
+                        </button>
+                    </>
+                )}
                 <button 
                     className={style.navButton}
                     onClick={() => setActivePage(LIST_PAGES.DASHBOARD)}
                 >
                     Poker
+                </button>
+                <button 
+                    className={style.navButton}
+                    onClick={() => setActivePage(LIST_PAGES.GAME_HISTORY)}
+                >
+                    📚 История
+                </button>
+                <button 
+                    className={style.navButton}
+                    onClick={() => setActivePage(LIST_PAGES.STATISTICS)}
+                >
+                    📊 Статистика
                 </button>
             </div>
             {getContent()}

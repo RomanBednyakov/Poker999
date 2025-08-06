@@ -119,6 +119,7 @@ const TradingPage = () => {
 
     useEffect(() => {
         getData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
@@ -126,6 +127,7 @@ const TradingPage = () => {
             return;
         }
         setDataDB()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data]);
 
     // const listAmount = useMemo(() => {

@@ -6,15 +6,17 @@
 }
 
 .navigation {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 8px;
+    padding: 12px;
     background: rgba(255, 255, 255, 0.05);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .navButton {
@@ -22,16 +24,19 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
     color: white;
-    padding: 12px 20px;
-    font-size: 14px;
+    padding: 14px 16px;
+    font-size: 13px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 120px;
+    min-height: 48px;
+    text-align: center;
+    line-height: 1.2;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .navButton:hover {
@@ -104,22 +109,45 @@
     }
 }
 
+/* Mobile First - Primary breakpoints */
+@media (max-width: 768px) {
+    .navigation {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 10px;
+        gap: 6px;
+    }
+    
+    .navButton,
+    .signOutButton {
+        padding: 12px 8px;
+        font-size: 12px;
+        min-height: 44px;
+    }
+    
+    .guestIndicator {
+        grid-column: 1 / -1;
+        text-align: center;
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+
 @media (max-width: 480px) {
     .navigation {
-        padding: 10px 5px;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 8px;
         gap: 4px;
     }
     
     .navButton,
     .signOutButton {
-        min-width: calc(50% - 2px);
         font-size: 11px;
-        padding: 6px 10px;
-        min-height: 36px;
+        padding: 10px 6px;
+        min-height: 42px;
+        border-radius: 8px;
     }
     
     .guestIndicator {
-        min-width: calc(50% - 2px);
         font-size: 11px;
         padding: 6px 10px;
         min-height: 36px;
