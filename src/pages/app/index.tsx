@@ -55,52 +55,7 @@ const AppPage: React.FC<DashboardType> = ({setActivePage, list, setList, default
     }
 
     return (
-        <div className={styles.Container}>
-            <div className={styles.sumBalance}>Sum: {getBalance()} $</div>
-            {list.map(item => (<div className={styles.list} key={item.id}>
-                    {isAdmin && <button
-                    onClick={() => setBalance(item.balance + 100, item.id)}
-                    style={{backgroundColor: 'green'}}
-                    className={styles.buttonAdd}
-                    disabled={!isAdmin}
-                >+
-                </button>}
-                    {isAdmin && <button
-                    onClick={() => setBalance(item.balance - 100, item.id)}
-                    style={{backgroundColor: '#FF013C'}}
-                    className={styles.buttonAdd}
-                    disabled={!isAdmin}
-                >-
-                </button>}
-                <div>{item.name}:</div>
-                <div className={styles.balance}>{item.balance}$</div>
-                    {isAdmin && <button
-                    onClick={() => deleteUser(item.id)}
-                    style={{backgroundColor: 'transparent', marginRight: 0}}
-                    className={styles.buttonAdd}
-                    disabled={!isAdmin}
-                ><img className={styles.img} src={DeleteIcon} alt=""/>
-                </button>}
-            </div>))}
-            {isAdmin && <div className={styles.contentName}>
-                <input
-                    type='text'
-                    value={value}
-                    onKeyDown={handleKeyDown}
-                    onChange={handleChangeName}
-                    disabled={!isAdmin}
-                    className={styles.Input}
-
-                />
-                <button
-                    disabled={!value || !isAdmin}
-                    onClick={handleSave}
-                    style={{width: '30%'}}
-                    className={styles.button}
-                >
-                    ADD
-                </button>
-            </div>}
+        <div className={styles.container}>
             {isAdmin && <button
                 onClick={handleRefresh}
                 disabled={!isAdmin}
@@ -109,6 +64,50 @@ const AppPage: React.FC<DashboardType> = ({setActivePage, list, setList, default
             >
                 REFRESH
             </button>}
+            <div className={styles.sumBalance}>Sum: {getBalance()} $</div>
+            {list.map(item => (<div className={styles.list} key={item.id}>
+                    {isAdmin && <button
+                    onClick={() => setBalance(item.balance + 100, item.id)}
+                    className={styles.buttonAdd}
+                    disabled={!isAdmin}
+                >+
+                </button>}
+                    {isAdmin && <button
+                    onClick={() => setBalance(item.balance - 100, item.id)}
+                    className={styles.buttonAdd}
+                    disabled={!isAdmin}
+                >-
+                </button>}
+                <div>{item.name}:</div>
+                <div className={styles.balance}>{item.balance}$</div>
+                    {isAdmin && <button
+                    onClick={() => deleteUser(item.id)}
+                    className={styles.buttonAdd}
+                    disabled={!isAdmin}
+                >
+                        <img className={styles.img} src={DeleteIcon} alt=""/>
+                </button>}
+            </div>))}
+            {isAdmin && <div className={styles.contentName}>
+                <div className={styles.containerInput}>
+                    <input
+                        type='text'
+                        value={value}
+                        onKeyDown={handleKeyDown}
+                        onChange={handleChangeName}
+                        disabled={!isAdmin}
+                        className={styles.input}
+                        placeholder="Enter player name..."
+                    />
+                </div>
+                <button
+                    disabled={!value || !isAdmin}
+                    onClick={handleSave}
+                    className={styles.button}
+                >
+                    ADD
+                </button>
+            </div>}
         </div>
     );
 }

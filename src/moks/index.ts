@@ -44,6 +44,8 @@ export const LIST_PAGES: any = {
     DASHBOARD: 'DASHBOARD',
     HOME: 'HOME',
     APP: 'APP',
+    Trading: 'Trading',
+    TradingMartin: 'TradingMartin',
 }
 
 export const DEFAULT_BALANCE: number = 200

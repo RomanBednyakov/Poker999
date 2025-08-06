@@ -19,16 +19,15 @@ const Dashboard: React.FC<DashboardType> = ({setActivePage}) => {
     }
     return (
         <div className={styles.Container}>
+            <h1 className={styles.title}>Admin Dashboard</h1>
             <button
-                style={{backgroundColor: '#13aa52'}}
-                className={styles.button}
+                className={`${styles.button} ${styles.continueButton}`}
                 onClick={handleContinue}>
                 CONTINUE
             </button>
             <button
+                className={`${styles.button} ${styles.refreshButton}`}
                 onClick={handleRefresh}
-                style={{backgroundColor: '#FF013C'}}
-                className={styles.button}
             >
                 REFRESH
             </button>

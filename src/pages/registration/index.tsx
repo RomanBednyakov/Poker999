@@ -1,11 +1,14 @@
-import React, {useCallback} from "react";
+import React, {useCallback, useContext} from "react";
 import {Box, Button, TextField} from "@material-ui/core";
 import {withRouter, Redirect} from "react-router";
 import app from "../../base.js";
-import LogoPoker from "../../img/pokker-office.svg"
+import {AuthContext} from "../../components/auth";
+
 import styles from './style.module.css';
 
 const SignUp = ({history}: any) => {
+    const {currentUser}: any = useContext(AuthContext);
+
     const handleSignUp = useCallback(async (event: any )=> {
         event.preventDefault();
         const { email, password } = event.target.elements;
@@ -19,8 +22,19 @@ const SignUp = ({history}: any) => {
         }
     }, [history]);
 
+    if (currentUser) {
+        return <Redirect to="/Poker999"/>;
+    }
+
     const handleClickLogin = () => {
         history.push("/login");
+    }
+
+    const handleGuestMode = () => {
+        // Создаем временного пользователя для гостевого режима
+        localStorage.setItem('guestMode', 'true');
+        // Перезагружаем страницу чтобы AuthContext перечитал localStorage
+        window.location.href = "/Poker999";
     }
 
 
@@ -35,7 +49,7 @@ const SignUp = ({history}: any) => {
                 }}
             >
                 <div className={styles.header}>
-                    <img src={LogoPoker} className={styles.logoImg} alt=""/>
+                    <h1 className={styles.logoText}>Poker Office</h1>
                 </div>
 
                 <div className={styles.inputBox}>
@@ -46,7 +60,10 @@ const SignUp = ({history}: any) => {
                 </div>
                 <div className={styles.buttonBox}>
                     <Button className={styles.button} type="submit" variant="contained">Sign up</Button>
-                    <Button className={styles.buttonSingUp} variant="text" onClick={handleClickLogin}>Log in </Button>
+                    <Button className={styles.buttonSingUp} variant="text" onClick={handleClickLogin}>Log in</Button>
+                    <Button className={styles.guestButton} variant="outlined" onClick={handleGuestMode}>
+                        Continue as Guest
+                    </Button>
                 </div>
 
             </Box>

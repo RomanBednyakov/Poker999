@@ -1,71 +1,182 @@
 .Container {
     display: flex;
     align-items: center;
-    padding-top: 30vh;
+    justify-content: center;
+    min-height: 100vh;
     flex-direction: column;
-    color: #3DD1E7;
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+    color: white;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    padding: 40px 20px;
 }
 .Input {
-    width: 90%;
-    height: 50px;
+    width: 100%;
+    max-width: 400px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 0 20px;
+    color: white;
+    font-size: 18px;
+    font-family: inherit;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin: 20px 0;
+}
+
+.Input:focus {
+    outline: none;
+    border-color: #667eea;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
 }
 
 .content {
-    width: 90%;
+    width: 100%;
+    max-width: 400px;
     display: flex;
-    margin-bottom: 30px;
-    justify-content: space-between;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px 0;
 }
 .button {
     display: flex;
     align-items: center;
-    margin-top: 30px;
-    background-color: #266DB6;
-    border: 0 solid #E5E7EB;
-    box-sizing: border-box;
-    color: #000000;
-    font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-size: 1rem;
-    font-weight: 700;
     justify-content: center;
-    line-height: 1.75rem;
-    padding: .75rem 1.65rem;
-    position: relative;
+    height: 55px;
+    background: linear-gradient(145deg, #667eea, #764ba2);
+    border: none;
+    border-radius: 12px;
+    box-sizing: border-box;
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
     text-align: center;
-    text-decoration: none #000000 solid;
-    text-decoration-thickness: auto;
-    width: 90%;
-    max-width: 460px;
-    position: relative;
+    width: 100%;
+    max-width: 400px;
     cursor: pointer;
-    transform: rotate(-2deg);
-    user-select: none;
     -webkit-user-select: none;
+    user-select: none;
     touch-action: manipulation;
+    transition: all 0.3s ease;
+    margin: 10px 0;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
 .button:focus {
-    outline: 0;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
 }
 
-.button:after {
-    content: '';
-    position: absolute;
-    border: 1px solid #fbeee0;
-    bottom: 4px;
-    left: 4px;
-    width: calc(100% - 1px);
-    height: calc(100% - 1px);
+.button:hover {
+    background: linear-gradient(145deg, #7c8af0, #8e6fbc);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
-.button:hover:after {
-    bottom: 2px;
-    left: 2px;
+.button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
 }
 
-@media (min-width: 768px) {
+.button:disabled {
+    background: linear-gradient(145deg, #a0a0a0, #808080);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.smallButton {
+    width: 120px;
+    height: 50px;
+    margin: 0;
+}
+
+.incrementButton {
+    background: linear-gradient(145deg, #2ea44f, #22863a);
+    box-shadow: 0 4px 15px rgba(46, 164, 79, 0.3);
+}
+
+.incrementButton:hover {
+    background: linear-gradient(145deg, #34d058, #2ea44f);
+    box-shadow: 0 6px 20px rgba(46, 164, 79, 0.4);
+}
+
+.decrementButton {
+    background: linear-gradient(145deg, #ff4757, #ff3742);
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+}
+
+.decrementButton:hover {
+    background: linear-gradient(145deg, #ff6b7a, #ff4757);
+    box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4);
+}
+
+.continueButton {
+    background: linear-gradient(145deg, #00d4aa, #00b894);
+    box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3);
+}
+
+.continueButton:hover {
+    background: linear-gradient(145deg, #00e6c0, #00d4aa);
+    box-shadow: 0 6px 20px rgba(0, 212, 170, 0.4);
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+@media (max-width: 768px) {
+    .Container {
+        padding: 30px 15px;
+    }
+    
     .button {
-        padding: .75rem 3rem;
-        font-size: 1.25rem;
+        height: 50px;
+        font-size: 0.9rem;
+    }
+    
+    .smallButton {
+        width: 100px;
+        height: 45px;
+    }
+    
+    .title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .Container {
+        padding: 20px 10px;
+    }
+    
+    .button {
+        height: 45px;
+        font-size: 0.8rem;
+    }
+    
+    .smallButton {
+        width: 90px;
+        height: 40px;
+    }
+    
+    .title {
+        font-size: 1.5rem;
+    }
+    
+    .content {
+        gap: 15px;
     }
 }

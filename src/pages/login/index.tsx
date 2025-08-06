@@ -3,7 +3,7 @@ import {Box, Button, TextField} from "@material-ui/core";
 import {withRouter, Redirect} from "react-router";
 import app from "../../base.js";
 import {AuthContext} from "../../components/auth";
-import LogoPoker from "../../img/pokker-office.svg"
+
 import styles from './style.module.css';
 
 const Login = ({history}: any) => {
@@ -33,6 +33,13 @@ const Login = ({history}: any) => {
         history.push("/signup");
     }
 
+    const handleGuestMode = () => {
+        // Создаем временного пользователя для гостевого режима
+        localStorage.setItem('guestMode', 'true');
+        // Перезагружаем страницу чтобы AuthContext перечитал localStorage
+        window.location.href = "/Poker999";
+    }
+
     return (
         <div className={styles.main}>
             <Box
@@ -44,7 +51,7 @@ const Login = ({history}: any) => {
                 }}
             >
                 <div className={styles.header}>
-                    <img src={LogoPoker} className={styles.logoImg} alt=""/>
+                    <h1 className={styles.logoText}>Poker Office</h1>
                 </div>
 
                 <div className={styles.inputBox}>
@@ -56,6 +63,9 @@ const Login = ({history}: any) => {
                 <div className={styles.buttonBox}>
                     <Button className={styles.button} type="submit" variant="contained">Log in</Button>
                     <Button className={styles.buttonSingUp} variant="text" onClick={handleClickSignup}>Sign up</Button>
+                    <Button className={styles.guestButton} variant="outlined" onClick={handleGuestMode}>
+                        Continue as Guest
+                    </Button>
                 </div>
 
             </Box>

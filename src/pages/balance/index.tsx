@@ -39,24 +39,28 @@ const BalancePage: React.FC<DashboardType> = ({
 
     return (
         <div className={styles.Container}>
-            <h1>Initial Balance</h1>
+            <h1 className={styles.title}>Initial Balance</h1>
             <div className={styles.content}>
                 <button
-                    style={{marginRight: '30px', background: 'green'}}
                     onClick={() => setValue(Number(value) + 100)}
-                    className={styles.button}
+                    className={`${styles.button} ${styles.smallButton} ${styles.incrementButton}`}
                 >
                     + 100
                 </button>
                 <button
                     onClick={() => setValue(value ? Number(value) - 100 : 0)}
-                    className={styles.button}
-                    style={{ background: 'red'}}
+                    className={`${styles.button} ${styles.smallButton} ${styles.decrementButton}`}
                 >
                     - 100
                 </button>
             </div>
-            <input type='number' value={value} onChange={handleChangeBalance} className={styles.Input}/>
+            <input 
+                type='number' 
+                value={value} 
+                onChange={handleChangeBalance} 
+                className={styles.Input}
+                placeholder="Enter balance amount"
+            />
             <button
                 disabled={!value}
                 onClick={handleSave}
@@ -64,13 +68,14 @@ const BalancePage: React.FC<DashboardType> = ({
             >
                 NEXT
             </button>
-            {!isEmptyList && <button
-                onClick={handleContinue}
-                className={styles.button}
-                style={{ background: '#14a73e98'}}
-            >
-                CONTINUE
-            </button>}
+            {!isEmptyList && (
+                <button
+                    onClick={handleContinue}
+                    className={`${styles.button} ${styles.continueButton}`}
+                >
+                    CONTINUE
+                </button>
+            )}
         </div>
     );
 }

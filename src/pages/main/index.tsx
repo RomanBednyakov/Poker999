@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState, useCallback} from 'react';
 import {ItemType} from '../../types'
 import Dashboard from "../dashboard";
 import BalancePage from "../balance";
@@ -7,26 +7,28 @@ import {LIST_PAGES, DEFAULT_BALANCE} from "../../moks";
 import app, {DB} from "../../base";
 import {AuthContext} from "../../components/auth";
 import style from './style.module.css'
+import TradingPage from "../trading";
+import TradingMartinPage from "../trading-martin";
 
 const MainPage = () => {
     const [list, setList] = useState<ItemType[]>([])
     const [activePage, setActivePage] = useState<string | null>(null)
     const [defaultBalance, setDefaultBalance] = useState<number>(DEFAULT_BALANCE)
 
-    const {currentUser}: any = useContext(AuthContext);
+    const {currentUser, isGuestMode}: any = useContext(AuthContext);
     const email = currentUser?.providerData[0]?.email
-    const isAdmin = email === 'roman@mail.ru' || email === 'gitis.senja@ya.ru'
+    const isAdmin = !isGuestMode && (email === 'roman@mail.ru' || email === 'gitis.senja@ya.ru')
 
     const getData = async () => {
         try {
             const data =  await DB.ref('app')
-            await data.on('value', (elem) => {
-                const listData = JSON.parse(elem.val()) || []
+            data.on('value', (elem) => {
+                const listData = JSON.parse(elem.val()) || [];
                 if (listData.length > 0) {
-                    setList(listData)
-                    setActivePage(LIST_PAGES.APP)
+                    setList(listData);
+                    setActivePage(LIST_PAGES.APP);
                 } else {
-                    setActivePage(LIST_PAGES.HOME)
+                    setActivePage(LIST_PAGES.HOME);
                 }
             })
         } catch (err) {
@@ -34,14 +36,14 @@ const MainPage = () => {
         }
     }
 
-    const setData = async () => {
+    const setData = useCallback(async () => {
         try {
             const data =  await DB.ref('app')
             await data.set(JSON.stringify(list))
         } catch (err) {
             console.log('Error : ' + err);
         }
-    }
+    }, [list])
 
     useEffect(() => {
         getData()
@@ -51,7 +53,7 @@ const MainPage = () => {
         if(list.length > 0) {
             setData()
         }
-    }, [list])
+    }, [list, setData])
 
     const getContent = () => {
         switch (activePage) {
@@ -95,6 +97,12 @@ const MainPage = () => {
                     setList={setList}
                 />
             }
+            case LIST_PAGES.Trading: {
+                return <TradingPage />
+            }
+            case LIST_PAGES.TradingMartin: {
+                return <TradingMartinPage />
+            }
             default: {
                 return <div/>;
             }
@@ -103,7 +111,44 @@ const MainPage = () => {
 
     return (
         <div className={style.main}>
-            <button onClick={() => app.auth().signOut()}>Sign out</button>
+            <div className={style.navigation}>
+                {isGuestMode && (
+                    <div className={style.guestIndicator}>
+                        Guest Mode
+                    </div>
+                )}
+                <button 
+                    className={style.signOutButton}
+                    onClick={() => {
+                        if (isGuestMode) {
+                            localStorage.removeItem('guestMode');
+                            window.location.reload();
+                        } else {
+                            app.auth().signOut();
+                        }
+                    }}
+                >
+                    {isGuestMode ? 'Exit Guest' : 'Sign out'}
+                </button>
+                <button 
+                    className={style.navButton}
+                    onClick={() => setActivePage(LIST_PAGES.Trading)}
+                >
+                    Trading
+                </button>
+                <button 
+                    className={style.navButton}
+                    onClick={() => setActivePage(LIST_PAGES.TradingMartin)}
+                >
+                    Trading Martin
+                </button>
+                <button 
+                    className={style.navButton}
+                    onClick={() => setActivePage(LIST_PAGES.DASHBOARD)}
+                >
+                    Poker
+                </button>
+            </div>
             {getContent()}
         </div>
     );
